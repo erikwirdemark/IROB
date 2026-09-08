@@ -1,0 +1,19 @@
+running egg_info
+writing ../../build/irob_assignment_1/irob_assignment_1.egg-info/PKG-INFO
+writing dependency_links to ../../build/irob_assignment_1/irob_assignment_1.egg-info/dependency_links.txt
+writing entry points to ../../build/irob_assignment_1/irob_assignment_1.egg-info/entry_points.txt
+writing requirements to ../../build/irob_assignment_1/irob_assignment_1.egg-info/requires.txt
+writing top-level names to ../../build/irob_assignment_1/irob_assignment_1.egg-info/top_level.txt
+reading manifest file '../../build/irob_assignment_1/irob_assignment_1.egg-info/SOURCES.txt'
+writing manifest file '../../build/irob_assignment_1/irob_assignment_1.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+running install_egg_info
+removing '/afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/lib/python3.12/site-packages/irob_assignment_1-1.0.0-py3.12.egg-info' (and everything under it)
+Copying ../../build/irob_assignment_1/irob_assignment_1.egg-info to /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/lib/python3.12/site-packages/irob_assignment_1-1.0.0-py3.12.egg-info
+running install_scripts
+Installing explorer script to /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/lib/irob_assignment_1
+writing list of installed files to '/afs/kth.se/home/e/r/erikwir/IROB_ws/build/irob_assignment_1/install.log'

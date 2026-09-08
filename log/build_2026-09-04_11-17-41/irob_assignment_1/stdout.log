@@ -1,0 +1,42 @@
+running egg_info
+creating ../../build/irob_assignment_1/irob_assignment_1.egg-info
+writing ../../build/irob_assignment_1/irob_assignment_1.egg-info/PKG-INFO
+writing dependency_links to ../../build/irob_assignment_1/irob_assignment_1.egg-info/dependency_links.txt
+writing entry points to ../../build/irob_assignment_1/irob_assignment_1.egg-info/entry_points.txt
+writing requirements to ../../build/irob_assignment_1/irob_assignment_1.egg-info/requires.txt
+writing top-level names to ../../build/irob_assignment_1/irob_assignment_1.egg-info/top_level.txt
+writing manifest file '../../build/irob_assignment_1/irob_assignment_1.egg-info/SOURCES.txt'
+reading manifest file '../../build/irob_assignment_1/irob_assignment_1.egg-info/SOURCES.txt'
+writing manifest file '../../build/irob_assignment_1/irob_assignment_1.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /afs/kth.se/home/e/r/erikwir/IROB_ws/build/irob_assignment_1/build/lib/irob_assignment_1
+copying irob_assignment_1/__init__.py -> /afs/kth.se/home/e/r/erikwir/IROB_ws/build/irob_assignment_1/build/lib/irob_assignment_1
+copying irob_assignment_1/explorer.py -> /afs/kth.se/home/e/r/erikwir/IROB_ws/build/irob_assignment_1/build/lib/irob_assignment_1
+running install
+running install_lib
+creating /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/lib/python3.12/site-packages/irob_assignment_1
+copying /afs/kth.se/home/e/r/erikwir/IROB_ws/build/irob_assignment_1/build/lib/irob_assignment_1/__init__.py -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/lib/python3.12/site-packages/irob_assignment_1
+copying /afs/kth.se/home/e/r/erikwir/IROB_ws/build/irob_assignment_1/build/lib/irob_assignment_1/explorer.py -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/lib/python3.12/site-packages/irob_assignment_1
+byte-compiling /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/lib/python3.12/site-packages/irob_assignment_1/__init__.py to __init__.cpython-312.pyc
+byte-compiling /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/lib/python3.12/site-packages/irob_assignment_1/explorer.py to explorer.cpython-312.pyc
+running install_data
+creating /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/ament_index/resource_index/packages
+copying resource/irob_assignment_1 -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/ament_index/resource_index/packages
+copying package.xml -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1
+creating /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/launch
+copying launch/simulator.launch.py -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/launch
+copying launch/spawn_turtlebot3.launch.py -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/launch
+copying launch/start.launch.py -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/launch
+copying launch/start_navigation.launch.py -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/launch
+creating /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/config
+copying config/navigation.yaml -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/config
+copying config/slam_params.yaml -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/config
+copying config/turtlebot3_burger_bridge.yaml -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/config
+creating /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/rviz
+copying rviz/view.rviz -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/rviz
+running install_egg_info
+Copying ../../build/irob_assignment_1/irob_assignment_1.egg-info to /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/lib/python3.12/site-packages/irob_assignment_1-1.0.0-py3.12.egg-info
+running install_scripts
+Installing explorer script to /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/lib/irob_assignment_1
+writing list of installed files to '/afs/kth.se/home/e/r/erikwir/IROB_ws/build/irob_assignment_1/install.log'

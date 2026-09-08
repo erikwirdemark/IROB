@@ -1,0 +1,2 @@
+/afs/kth.se/misc/info/kurser/DD2410/ht26/pixi/IROB/.pixi/envs/default/lib/python3.12/site-packages/setuptools/_distutils/dist.py:289: UserWarning: Unknown distribution option: 'tests_require'
+  warnings.warn(msg)

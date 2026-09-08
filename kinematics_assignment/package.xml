@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>kinematics_assignment</name>
+  <version>0.0.0</version>
+  <description>Kinematics assignment of the robotics course</description>
+  <maintainer email="moletta@kth.se">marco</maintainer>
+  <license>BSD</license>
+
+  <!-- normal run-time deps -->
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+
+  <!-- depends on pytest for testing -->
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

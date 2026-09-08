@@ -1,0 +1,46 @@
+[2.742s] Invoking command in '/afs/kth.se/home/e/r/erikwir/IROB_ws/src/irob_assignment_1': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PIXI_PROMPT=(IROB_ws) PS1=(IROB_ws) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ PYTHONPATH=/afs/kth.se/home/e/r/erikwir/IROB_ws/build/irob_assignment_1/prefix_override:/afs/kth.se/misc/info/kurser/DD2410/ht26/pixi/IROB/.pixi/envs/default/lib/python3.12/site-packages/colcon_core/task/python/colcon_distutils_commands:/afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/lib/python3.12/site-packages:${PYTHONPATH} /afs/kth.se/misc/info/kurser/DD2410/ht26/pixi/IROB/.pixi/envs/default/bin/python3.12 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/irob_assignment_1 build --build-base /afs/kth.se/home/e/r/erikwir/IROB_ws/build/irob_assignment_1/build install --record /afs/kth.se/home/e/r/erikwir/IROB_ws/build/irob_assignment_1/install.log --single-version-externally-managed install_data
+[3.226s] /afs/kth.se/misc/info/kurser/DD2410/ht26/pixi/IROB/.pixi/envs/default/lib/python3.12/site-packages/setuptools/_distutils/dist.py:289: UserWarning: Unknown distribution option: 'tests_require'
+[3.226s]   warnings.warn(msg)
+[3.535s] running egg_info
+[3.584s] creating ../../build/irob_assignment_1/irob_assignment_1.egg-info
+[3.587s] writing ../../build/irob_assignment_1/irob_assignment_1.egg-info/PKG-INFO
+[3.594s] writing dependency_links to ../../build/irob_assignment_1/irob_assignment_1.egg-info/dependency_links.txt
+[3.596s] writing entry points to ../../build/irob_assignment_1/irob_assignment_1.egg-info/entry_points.txt
+[3.598s] writing requirements to ../../build/irob_assignment_1/irob_assignment_1.egg-info/requires.txt
+[3.600s] writing top-level names to ../../build/irob_assignment_1/irob_assignment_1.egg-info/top_level.txt
+[3.602s] writing manifest file '../../build/irob_assignment_1/irob_assignment_1.egg-info/SOURCES.txt'
+[3.709s] reading manifest file '../../build/irob_assignment_1/irob_assignment_1.egg-info/SOURCES.txt'
+[3.712s] writing manifest file '../../build/irob_assignment_1/irob_assignment_1.egg-info/SOURCES.txt'
+[3.714s] running build
+[3.714s] running build_py
+[3.715s] creating /afs/kth.se/home/e/r/erikwir/IROB_ws/build/irob_assignment_1/build/lib/irob_assignment_1
+[3.723s] copying irob_assignment_1/__init__.py -> /afs/kth.se/home/e/r/erikwir/IROB_ws/build/irob_assignment_1/build/lib/irob_assignment_1
+[3.725s] copying irob_assignment_1/explorer.py -> /afs/kth.se/home/e/r/erikwir/IROB_ws/build/irob_assignment_1/build/lib/irob_assignment_1
+[3.730s] running install
+[3.742s] running install_lib
+[3.792s] creating /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/lib/python3.12/site-packages/irob_assignment_1
+[3.796s] copying /afs/kth.se/home/e/r/erikwir/IROB_ws/build/irob_assignment_1/build/lib/irob_assignment_1/__init__.py -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/lib/python3.12/site-packages/irob_assignment_1
+[3.800s] copying /afs/kth.se/home/e/r/erikwir/IROB_ws/build/irob_assignment_1/build/lib/irob_assignment_1/explorer.py -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/lib/python3.12/site-packages/irob_assignment_1
+[3.807s] byte-compiling /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/lib/python3.12/site-packages/irob_assignment_1/__init__.py to __init__.cpython-312.pyc
+[3.813s] byte-compiling /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/lib/python3.12/site-packages/irob_assignment_1/explorer.py to explorer.cpython-312.pyc
+[3.818s] running install_data
+[3.819s] creating /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/ament_index/resource_index/packages
+[3.826s] copying resource/irob_assignment_1 -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/ament_index/resource_index/packages
+[3.829s] copying package.xml -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1
+[3.834s] creating /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/launch
+[3.837s] copying launch/simulator.launch.py -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/launch
+[3.841s] copying launch/spawn_turtlebot3.launch.py -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/launch
+[3.845s] copying launch/start.launch.py -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/launch
+[3.848s] copying launch/start_navigation.launch.py -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/launch
+[3.853s] creating /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/config
+[3.856s] copying config/navigation.yaml -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/config
+[3.861s] copying config/slam_params.yaml -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/config
+[3.865s] copying config/turtlebot3_burger_bridge.yaml -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/config
+[3.869s] creating /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/rviz
+[3.872s] copying rviz/view.rviz -> /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/share/irob_assignment_1/rviz
+[3.878s] running install_egg_info
+[3.930s] Copying ../../build/irob_assignment_1/irob_assignment_1.egg-info to /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/lib/python3.12/site-packages/irob_assignment_1-1.0.0-py3.12.egg-info
+[3.960s] running install_scripts
+[4.243s] Installing explorer script to /afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/lib/irob_assignment_1
+[4.249s] writing list of installed files to '/afs/kth.se/home/e/r/erikwir/IROB_ws/build/irob_assignment_1/install.log'
+[4.314s] Invoked command in '/afs/kth.se/home/e/r/erikwir/IROB_ws/src/irob_assignment_1' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PIXI_PROMPT=(IROB_ws) PS1=(IROB_ws) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ PYTHONPATH=/afs/kth.se/home/e/r/erikwir/IROB_ws/build/irob_assignment_1/prefix_override:/afs/kth.se/misc/info/kurser/DD2410/ht26/pixi/IROB/.pixi/envs/default/lib/python3.12/site-packages/colcon_core/task/python/colcon_distutils_commands:/afs/kth.se/home/e/r/erikwir/IROB_ws/install/irob_assignment_1/lib/python3.12/site-packages:${PYTHONPATH} /afs/kth.se/misc/info/kurser/DD2410/ht26/pixi/IROB/.pixi/envs/default/bin/python3.12 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/irob_assignment_1 build --build-base /afs/kth.se/home/e/r/erikwir/IROB_ws/build/irob_assignment_1/build install --record /afs/kth.se/home/e/r/erikwir/IROB_ws/build/irob_assignment_1/install.log --single-version-externally-managed install_data
