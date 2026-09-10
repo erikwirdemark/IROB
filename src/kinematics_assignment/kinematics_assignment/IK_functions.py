@@ -7,7 +7,9 @@
 
 import math
 import numpy as np
+from rclpy.logging import get_logger
 
+logger = get_logger("kuka_IK")
 
 def scara_IK(point):
     x = point[0]
@@ -50,9 +52,7 @@ def kuka_IK(point, R, joint_positions):
     while np.linalg.norm(Epsilon_x) > threshold:
         transformations = forward_kinematics(q)
         j = jacobian(q, transformations)
-        X_hat = transformations[0] # Identity matrix at index 0
-        for T in transformations[1:]:
-            X_hat = X_hat @ T
+        X_hat = transformations[-1] # base layer to end effector 
 
         position_curr = X_hat[0:3, 3]
         rotation_curr = X_hat[0:3, 0:3]
@@ -60,12 +60,13 @@ def kuka_IK(point, R, joint_positions):
         Epsilon_pos = point - position_curr
 
         R_err = R @ rotation_curr.T
-        Epsilon_rotation = 0.5 * np.array([R_err[2, 1] - R_err[1, 2],
+        Epsilon_rotation =  np.array([R_err[2, 1] - R_err[1, 2],
                                 R_err[0, 2] - R_err[2, 0],
                                 R_err[1, 0] - R_err[0, 1]])
 
         Epsilon_x = np.concatenate([Epsilon_pos, Epsilon_rotation])
-
+        # logger.info(f'This is the size of the jacobian: {j.size}')
+        # logger.info(f'This is the size of Epsilon_x: {Epsilon_x}')
         Epsilon_q = np.linalg.pinv(j) @ Epsilon_x
         q = q - Epsilon_q
     return q
@@ -84,24 +85,26 @@ def forward_kinematics(q):
     DH_params.append([-np.pi/2, 0, 0, q6])
     DH_params.append([0, 0, 0, q7])
 
-    transformations = [np.eye(4)]
+    transformation = np.eye(4)
+    transformations = [transformation]
     for row in DH_params:
-        transformations.append(DH_transformation(row))
+        transformation = transformation @ DH_transformation(row) # from base layer
+        transformations.append(transformation)
     return transformations
 
 def jacobian(q, transformations=None):
     if transformations is None:
-        transformations = forward_kinematics(q)
+        raise ValueError("You forgot to pass the trnasformations")
     p_e = transformations[-1][0:3, 3]
+    J = np.zeros((6, 7))
     for i in range(7):
         z_i = transformations[i][0:3, 2]
         p_i = transformations[i][0:3, 3]
         v = np.cross(z_i, p_e - p_i) # linear velocity
         w = z_i # anfular velocity
-        if i == 0:
-            J = np.column_stack((v, w))
-        else:
-            J = np.column_stack((J, np.column_stack((v, w))))
+        J[0:3, i] = v
+        J[3:6, i] = w
+    # logger.info(f'size of jacobian: {J.size}')
     return J
 
 def DH_transformation(DH_params_row):
