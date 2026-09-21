@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>mapping_assignment</name>
+  <version>0.1.0</version>
+  <description>Mapping assignment of the robotics course ROS2</description>
+  
+  <maintainer email="dduberg@kth.se">Daniel Duberg</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend> 
+  <depend>rclpy</depend> 
+  <depend>geometry_msgs</depend>
+  <depend>map_msgs</depend>
+  <depend>message_filters</depend>
+  <depend>nav_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>tf2_ros</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>turtlebot3_description</depend>
+  <depend>urdf</depend>
+  <depend>xacro</depend>
+  
+  <export>
+    <build_type>ament_cmake</build_type>
+    </export>
+</package>
