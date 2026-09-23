@@ -166,24 +166,26 @@ class Mapping:
 
         position_x = pose.pose.position.x
         position_y = pose.pose.position.y
-
+        origin_x, origin_y = origin.position.x, origin.position.y
         ranges = np.array(ranges)
         # Discards ranges out of bounds (Should I clip instead maybe?)
-        ranges = np.where((ranges >= range_min) & (ranges <= range_max), ranges, None)
+        #ranges = np.where((ranges > range_min) & (ranges < range_max), ranges, None)
         points = []
         for i in range(len(ranges)):
-            if ranges[i] is not None:
+            if np.isnan(ranges[i]) or np.isinf(ranges[i]):
+                continue
+            if (ranges[i] > range_min) & (ranges[i] < range_max):
                 angle = angle_min + i * angle_increment + robot_yaw
                 distance = ranges[i]
                 x = position_x + distance * cos(angle)
                 y = position_y + distance * sin(angle)
                 points.append((x, y, distance))
-        # order by distance to avoid assigning free space to occupied space (as the presentation mentions)
+        #(ranges > range_min) & (ranges < range_max) order by distance to avoid assigning free space to occupied space (as the presentation mentions)
         points.sort(key=lambda point: point[2])
         for point in points:
             x, y, _ = point
-            x_cell = int((x - origin[0]) / resolution)
-            y_cell = int((y - origin[1]) / resolution)
+            x_cell = int((x - origin_x) // resolution)
+            y_cell = int((y - origin_y) // resolution)
             self.add_to_map(grid_map, x_cell, y_cell, self.occupied_space)
             # Only for C?
             # traversed = self.raytrace((int(position_x), int(position_y)), (x, y))

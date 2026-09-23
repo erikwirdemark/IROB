@@ -22,7 +22,7 @@ _colcon_prefix_chain_zsh_source_script() {
 COLCON_CURRENT_PREFIX="/afs/kth.se/misc/info/kurser/DD2410/ht26/pixi/IROB/.pixi/envs/default"
 _colcon_prefix_chain_zsh_source_script "$COLCON_CURRENT_PREFIX/local_setup.zsh"
 # setting COLCON_CURRENT_PREFIX avoids determining the prefix in the sourced script
-COLCON_CURRENT_PREFIX="/home/e/r/erikwir/IROB_ws/install"
+COLCON_CURRENT_PREFIX="/home/e/r/erikwir/IROB/install"
 _colcon_prefix_chain_zsh_source_script "$COLCON_CURRENT_PREFIX/local_setup.zsh"
 
 # source this prefix
