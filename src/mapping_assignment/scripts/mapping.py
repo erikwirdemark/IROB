@@ -175,14 +175,16 @@ class Mapping:
             if ranges[i] is not None:
                 angle = angle_min + i * angle_increment + robot_yaw
                 distance = ranges[i]
-                x = int(position_x + distance * cos(angle))
-                y = int(position_y + distance * sin(angle))
+                x = position_x + distance * cos(angle)
+                y = position_y + distance * sin(angle)
                 points.append((x, y, distance))
         # order by distance to avoid assigning free space to occupied space (as the presentation mentions)
         points.sort(key=lambda point: point[2])
         for point in points:
             x, y, _ = point
-            self.add_to_map(grid_map, x, y, self.occupied_space)
+            x_cell = int((x - origin[0]) / resolution)
+            y_cell = int((y - origin[1]) / resolution)
+            self.add_to_map(grid_map, x_cell, y_cell, self.occupied_space)
             # Only for C?
             # traversed = self.raytrace((int(position_x), int(position_y)), (x, y))
             # for cell in traversed:
