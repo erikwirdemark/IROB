@@ -185,25 +185,24 @@ class Mapping:
                 points.append((x, y, distance))
         #(ranges > range_min) & (ranges < range_max) order by distance to avoid assigning free space to occupied space (as the presentation mentions)
         points.sort(key=lambda point: point[2])
-        min_x_cell = float('inf')
-        min_y_cell = float('inf')
-        max_x_cell = float('-inf')
-        max_y_cell = float('-inf')
         occupied_cells = []
+        robot_x_cell = int((position_x - origin_x) / resolution)
+        robot_y_cell = int((position_y - origin_y) / resolution)
+        min_x_cell = robot_x_cell
+        min_y_cell = robot_y_cell
+        max_x_cell = robot_x_cell
+        max_y_cell = robot_y_cell
+
         for point in points:
             x, y, _ = point
             x_cell = int((x - origin_x) // resolution)
             y_cell = int((y - origin_y) // resolution)
-            robot_x_cell = int((position_x - origin_x) / resolution)
-            robot_y_cell = int((position_y - origin_y) / resolution)
-            min_x_cell, min_y_cell, max_x_cell, max_y_cell = update_bounding_box(min_x_cell, min_y_cell, max_x_cell, max_y_cell, x_cell, y_cell)
             occupied_cells.append((x_cell, y_cell))
             traversed = self.raytrace((int(robot_x_cell), int(robot_y_cell)), (x_cell, y_cell))
             for cx, cy in traversed:
                 if self.is_in_bounds(grid_map, cx, cy):
                     if grid_map[cx, cy] != self.occupied_space:
                         self.add_to_map(grid_map, cx, cy, self.free_space)
-                        min_x_cell, min_y_cell, max_x_cell, max_y_cell = update_bounding_box(min_x_cell, min_y_cell, max_x_cell, max_y_cell, cx, cy)
             self.add_to_map(grid_map, x_cell, y_cell, self.occupied_space)
 
             min_x_cell, min_y_cell, max_x_cell, max_y_cell = update_bounding_box(min_x_cell, min_y_cell, max_x_cell, max_y_cell, x_cell, y_cell)
@@ -229,8 +228,11 @@ class Mapping:
         # Maximum y index - minimum y index + 1
         update.height = max_y_cell - min_y_cell + 1
         # The map data inside the rectangle, in row-major order.
-        update.data = [grid_map[x, y] for y in range(update.y, update.y + update.height) for x in range(update.x, update.x + update.width)]
-
+        update_data = []
+        for y in range(update.y, update.y + update.height):
+            for x in range(update.x, update.x + update.width):
+                update_data.append(grid_map[x, y])
+        update.data = update_data
         # Return the updated map together with only the
         # part of the map that has been updated
         return grid_map, update
@@ -269,23 +271,22 @@ class Mapping:
             for y in range(grid_map.get_height()):
                 if grid_map[x, y] == self.occupied_space:
                     occupied_cells.append((x, y))
-        
+        offsets = [
+            (dx, dy) 
+            for dx in range(-self.radius, self.radius + 1) 
+            for dy in range(-self.radius, self.radius + 1) 
+            if dx * dx + dy * dy <= self.radius * self.radius
+        ]
         for x, y in occupied_cells:
-            for dx in range(-self.radius, self.radius + 1):
-                for dy in range(-self.radius, self.radius + 1):
-                    if dx * dx + dy * dy <= self.radius * self.radius:
-                        new_x = x + dx
-                        new_y = y + dy
-                        if self.is_in_bounds(grid_map, new_x, new_y):
-                            if grid_map[new_x, new_y] != self.occupied_space:
-                                self.add_to_map(grid_map, new_x, new_y, self.c_space)
+            for dx, dy in offsets:
+                new_x = x + dx
+                new_y = y + dy
+                if self.is_in_bounds(grid_map, new_x, new_y) and grid_map[new_x, new_y] != self.occupied_space:
+                    self.add_to_map(grid_map, new_x, new_y, self.c_space)
 
         return grid_map
 
 def update_bounding_box(min_x, min_y, max_x, max_y, x, y):
-
-
-
     if x < min_x:
         min_x = x
     if y < min_y:
