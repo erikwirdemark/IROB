@@ -167,6 +167,8 @@ class Mapping:
         position_x = pose.pose.position.x
         position_y = pose.pose.position.y
         origin_x, origin_y = origin.position.x, origin.position.y
+
+
         ranges = np.array(ranges)
         # Discards ranges out of bounds (Should I clip instead maybe?)
         #ranges = np.where((ranges > range_min) & (ranges < range_max), ranges, None)
@@ -182,15 +184,26 @@ class Mapping:
                 points.append((x, y, distance))
         #(ranges > range_min) & (ranges < range_max) order by distance to avoid assigning free space to occupied space (as the presentation mentions)
         points.sort(key=lambda point: point[2])
+        min_x_cell = float('inf')
+        min_y_cell = float('inf')
+        max_x_cell = float('-inf')
+        max_y_cell = float('-inf')
         for point in points:
             x, y, _ = point
             x_cell = int((x - origin_x) // resolution)
             y_cell = int((y - origin_y) // resolution)
+            x_cell = int((x - origin_x) / resolution)
+            y_cell = int((y - origin_y) / resolution)
+            robot_x_cell = int((position_x - origin_x) / resolution)
+            robot_y_cell = int((position_y - origin_y) / resolution)
+            min_x_cell, min_y_cell, max_x_cell, max_y_cell = update_bounding_box(min_x_cell, min_y_cell, max_x_cell, max_y_cell, x_cell, y_cell)
             self.add_to_map(grid_map, x_cell, y_cell, self.occupied_space)
             # Only for C?
-            # traversed = self.raytrace((int(position_x), int(position_y)), (x, y))
-            # for cell in traversed:
-            #     self.add_to_map(grid_map, cell[0], cell[1], self.free_space)
+            traversed = self.raytrace((int(robot_x_cell), int(robot_y_cell)), (x_cell, y_cell))
+            for cell in traversed:
+                x, y = cell
+                self.add_to_map(grid_map, x, y, self.free_space)
+                min_x_cell, min_y_cell, max_x_cell, max_y_cell = update_bounding_box(min_x_cell, min_y_cell, max_x_cell, max_y_cell, x, y)
 
         """
         For C only!
@@ -199,13 +212,13 @@ class Mapping:
         # Only get the part that has been updated
         update = OccupancyGridUpdate()
         # The minimum x index in 'grid_map' that has been updated
-        update.x = 0
+        update.x = min_x_cell
         # The minimum y index in 'grid_map' that has been updated
-        update.y = 0
+        update.y = min_y_cell
         # Maximum x index - minimum x index + 1
-        update.width = 0
+        update.width = max_x_cell - min_x_cell + 1
         # Maximum y index - minimum y index + 1
-        update.height = 0
+        update.height = max_y_cell - min_y_cell + 1
         # The map data inside the rectangle, in row-major order.
         update.data = []
 
@@ -242,7 +255,29 @@ class Mapping:
         """
         Fill in your solution here
         """
+        for x in range(grid_map.get_width()):
+            for y in range(grid_map.get_height()):
+                if grid_map[x, y] == self.occupied_space:
+                    for dx in range(-self.radius, self.radius + 1):
+                        for dy in range(-self.radius, self.radius + 1):
+                            if dx * dx + dy * dy <= self.radius * self.radius:
+                                new_x = x + dx
+                                new_y = y + dy
+                                if grid_map[new_x, new_y] != self.occupied_space:
+                                    self.add_to_map(grid_map, new_x, new_y, self.c_space)
 
-        
-        # Return the inflated map
         return grid_map
+
+def update_bounding_box(min_x, min_y, max_x, max_y, x, y):
+    """Updates the bounding box with the new point (x, y).
+    Returns the updated bounding box.
+    """
+    if x < min_x:
+        min_x = x
+    if y < min_y:
+        min_y = y
+    if x > max_x:
+        max_x = x
+    if y > max_y:
+        max_y = y
+    return min_x, min_y, max_x, max_y
