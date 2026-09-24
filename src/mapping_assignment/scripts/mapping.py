@@ -182,9 +182,9 @@ class Mapping:
                 distance = ranges[i]
                 x = position_x + distance * cos(angle)
                 y = position_y + distance * sin(angle)
-                points.append((x, y, distance))
+                points.append((x, y))
         #(ranges > range_min) & (ranges < range_max) order by distance to avoid assigning free space to occupied space (as the presentation mentions)
-        points.sort(key=lambda point: point[2])
+        # points.sort(key=lambda point: point[2])
         occupied_cells = []
         robot_x_cell = int((position_x - origin_x) / resolution)
         robot_y_cell = int((position_y - origin_y) / resolution)
@@ -194,7 +194,7 @@ class Mapping:
         max_y_cell = robot_y_cell
 
         for point in points:
-            x, y, _ = point
+            x, y = point
             x_cell = int((x - origin_x) // resolution)
             y_cell = int((y - origin_y) // resolution)
             occupied_cells.append((x_cell, y_cell))
@@ -202,10 +202,15 @@ class Mapping:
             for cx, cy in traversed:
                 if self.is_in_bounds(grid_map, cx, cy):
                     self.add_to_map(grid_map, cx, cy, self.free_space)
-            self.add_to_map(grid_map, x_cell, y_cell, self.occupied_space)
 
             min_x_cell, min_y_cell, max_x_cell, max_y_cell = update_bounding_box(min_x_cell, min_y_cell, max_x_cell, max_y_cell, x_cell, y_cell)
-        
+
+        for point in points:
+            x, y = point
+            x_cell = int((x - origin_x) // resolution)
+            y_cell = int((y - origin_y) // resolution)
+            self.add_to_map(grid_map, x_cell, y_cell, self.occupied_space)
+
         """
         For C only!
         Fill in the update correctly below.
@@ -227,11 +232,11 @@ class Mapping:
         # Maximum y index - minimum y index + 1
         update.height = max_y_cell - min_y_cell + 1
         # The map data inside the rectangle, in row-major order.
-        update_data = []
-        for y in range(update.y, update.y + update.height):
-            for x in range(update.x, update.x + update.width):
-                update_data.append(grid_map[x, y])
-        update.data = update_data
+        update.data = [
+            grid_map[x, y]
+            for y in range(update.y, update.y + update.height)
+            for x in range(update.x, update.x + update.width)
+        ]
         # Return the updated map together with only the
         # part of the map that has been updated
         return grid_map, update
