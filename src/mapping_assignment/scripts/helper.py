@@ -104,7 +104,7 @@ def get_scan(data):
     scan.range_min = float(data[8])
     scan.range_max = float(data[9])
     scan.ranges = np.array(data[10][1:-1].split(" "))
-    scan.ranges = np.asfarray(scan.ranges, float).tolist()
+    scan.ranges = np.asarray(scan.ranges, float).tolist()
     # We did not save intensities to file, so just set to 0
     scan.intensities = [0.0]*len(scan.ranges)
 

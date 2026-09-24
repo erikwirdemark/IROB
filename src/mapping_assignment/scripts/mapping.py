@@ -201,8 +201,7 @@ class Mapping:
             traversed = self.raytrace((int(robot_x_cell), int(robot_y_cell)), (x_cell, y_cell))
             for cx, cy in traversed:
                 if self.is_in_bounds(grid_map, cx, cy):
-                    if grid_map[cx, cy] != self.occupied_space:
-                        self.add_to_map(grid_map, cx, cy, self.free_space)
+                    self.add_to_map(grid_map, cx, cy, self.free_space)
             self.add_to_map(grid_map, x_cell, y_cell, self.occupied_space)
 
             min_x_cell, min_y_cell, max_x_cell, max_y_cell = update_bounding_box(min_x_cell, min_y_cell, max_x_cell, max_y_cell, x_cell, y_cell)
