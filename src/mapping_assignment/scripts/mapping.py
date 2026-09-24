@@ -10,7 +10,7 @@
 from math import cos, sin, atan2, fabs
 
 # Numpy
-from mapping_assignment.scripts import grid_map
+
 import numpy as np
 
 # "Local version" of ROS messages
@@ -283,9 +283,9 @@ class Mapping:
         return grid_map
 
 def update_bounding_box(min_x, min_y, max_x, max_y, x, y):
-    """Updates the bounding box with the new point (x, y).
-    Returns the updated bounding box.
-    """
+
+
+
     if x < min_x:
         min_x = x
     if y < min_y:
